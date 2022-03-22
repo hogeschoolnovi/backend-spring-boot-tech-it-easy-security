@@ -43,5 +43,4 @@ De vorige opdracht was een best pittige opgave, maar als alles gelukt is heb je 
 - De applicatie moet draaien met toegang tot de endpoints voor de juiste gebruikers
 
 ## Stappenplan
-_Let op_: het is uitdagender om jouw eigen stappenplan te maken. Mocht je niet zo goed weten waar je moet beginnen, kun je onderstaand stappenplan volgen:
-1. Omdat we nu al een tijdje met de opdracht bezig zijn en we 2 lessen krijgen over `Security` wil ik jullie de eerste week uitdagen om zelf een stappenplan te maken en te zien hoe ver jullie komen. Daarom voeg ik nu nog geen stappenplan toe. Kijk ook of je het voor elkaar krijgt om de beveiliging te implementeren, lukt het niet geen stress. Er komen updates
+Omdat we nu al een tijdje met de opdracht bezig zijn en we 2 lessen krijgen over `Security` wil ik jullie uitdagen om zelf een stappenplan te maken en te zien hoe ver jullie komen. Daarom voeg ik nu geen stappenplan toe. 
