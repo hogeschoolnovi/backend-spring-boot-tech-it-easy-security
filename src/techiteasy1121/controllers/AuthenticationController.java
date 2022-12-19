@@ -6,7 +6,7 @@ import java.security.Principal;
 @RestController
 public class AuthenticationController {
 
-    /*autowire authentionManager, userDetailService en jwtUtil*/
+    /*inject authentionManager, userDetailService en jwtUtil*/
 
 
     @GetMapping(value = "/authenticated")

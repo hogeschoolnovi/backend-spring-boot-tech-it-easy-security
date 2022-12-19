@@ -17,7 +17,7 @@ import java.util.Map;
 @RequestMapping(value = "/users")
 public class UserController {
 
-    /*autowire userService*/
+    /*inject userService*/
 
     @GetMapping(value = "")
     public ResponseEntity<List<UserDto>> getUsers() {

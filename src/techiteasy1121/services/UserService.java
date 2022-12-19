@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 /*moest hier niet een annotatie?*/
 public class UserService {
-    /*autowire de juiste repository*/
+    /*inject de juiste repository*/
 
     public List<UserDto> getUsers() {
         List<UserDto> collection = new ArrayList<>();

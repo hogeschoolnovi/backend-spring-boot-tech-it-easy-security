@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /*annotatie*/
 public class CustomUserDetailsService implements UserDetailsService {
 
-    /*autorwire userservice */
+    /*inject userservice */
 
 
 
