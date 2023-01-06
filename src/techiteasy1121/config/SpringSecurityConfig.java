@@ -31,6 +31,7 @@ public class SpringSecurityConfig {
         http
                 .csrf().disable()
                 .httpBasic.disable()
+                .cors().and()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/users").permitAll()
                 .antMatchers(HttpMethod.GET,"/users").hasRole("ADMIN")
