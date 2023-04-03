@@ -13,7 +13,7 @@ Maak de beveiliging voor de applicatie met een JWT. Zorg hierbij dat er een user
  
 ## Randvoorwaarden
 De opdracht moet voldoen aan de volgende voorwaarden:
-- De `POM` bevat de _spring-boot-starter-security_ dependency
+- De `POM` bevat de _spring-boot-starter-security_, _jjwt-api_, _jjwt-impl_ en _jjwt-jackson_ dependencies
 - De applicatie bevat:
   - `GlobalCorsConfiguration`
   - `SpringSecurityConfig`
@@ -48,11 +48,23 @@ De opdracht moet voldoen aan de volgende voorwaarden:
      <groupId>org.springframework.boot</groupId>
      <artifactId>spring-boot-starter-security</artifactId>
   </dependency>`
+ - ` <dependency>
+   <groupId>io.jsonwebtoken</groupId>
+   <artifactId>jjwt-api</artifactId>
+   <version>0.11.5</version>
+   </dependency>`
  - `<dependency>
-     <groupId>io.jsonwebtoken</groupId>
-     <artifactId>jjwt</artifactId>
-     <version>0.9.1</version>
-  </dependency>`
+   <groupId>io.jsonwebtoken</groupId>
+   <artifactId>jjwt-impl</artifactId>
+   <version>0.11.5</version>
+   <scope>runtime</scope>
+   </dependency>`
+ - `<dependency>
+   <groupId>io.jsonwebtoken</groupId>
+   <artifactId>jjwt-jackson</artifactId>
+   <version>0.11.5</version>
+   <scope>runtime</scope>
+   </dependency>`
   
 2. Voeg de `User`, `Authority` en de `AuthorityKey` toe als modellen.
   
@@ -74,10 +86,10 @@ De opdracht moet voldoen aan de volgende voorwaarden:
 
 11. Voeg als laatste de `SpringSecurityConfig` en de `GlobalCorsConfiguration` toe aan het project.
 
-12. Kijk goed of je in de `SpringSecurityConfig` nog antmatchers wil/moet toevoegen.
+12. Kijk goed of je in de `SpringSecurityConfig` nog requestmatchers wil/moet toevoegen.
 
 13. Update de data.sql met users en authorities.
 
-14. Check goed of je alle opdracht-comments hebt uitgevoerd.
+14. Check goed of je alle opdracht-comments hebt uitgevoerd en er geen fouten meer in de applicatie zitten.
 
 

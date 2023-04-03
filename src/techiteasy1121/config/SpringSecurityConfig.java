@@ -8,8 +8,7 @@ public class SpringSecurityConfig {
     /*inject customUserDetailService en jwtRequestFilter*/
 
 
-
-
+    // Authenticatie met customUserDetailsService en passwordEncoder
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
         return http.getSharedObject(AuthenticationManagerBuilder.class)
@@ -19,11 +18,15 @@ public class SpringSecurityConfig {
                 .build();
     }
 
+
+    // PasswordEncoderBean. Deze kun je overal in je applicatie injecteren waar nodig.
+    // Je kunt dit ook in een aparte configuratie klasse zetten.
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    // Authorizatie met jwt
     @Bean
     protected SecurityFilterChain filter (HttpSecurity http) throws Exception {
 
@@ -32,15 +35,15 @@ public class SpringSecurityConfig {
                 .csrf().disable()
                 .httpBasic.disable()
                 .cors().and()
-                .authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/users").permitAll()
-                .antMatchers(HttpMethod.GET,"/users").hasRole("ADMIN")
-                .antMatchers(HttpMethod.POST,"/users/**").hasRole("ADMIN")
-                .antMatchers(HttpMethod.DELETE, "/users/**").hasRole("ADMIN")
+                .authorizeHttpRequests()
+                .requestMatchers(HttpMethod.POST, "/users").permitAll()
+                .requestMatchers(HttpMethod.GET,"/users").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.POST,"/users/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/users/**").hasRole("ADMIN")
                 /*voeg de antmatchers toe voor admin(post en delete) en user (overige)*/
-                .antMatchers("/authenticated").authenticated()
-                .antMatchers("/authenticate").permitAll()/*allen dit punt mag toegankelijk zijn voor niet ingelogde gebruikers*/
-                .anyRequest().permitAll()
+                .requestMatchers("/authenticated").authenticated()
+                .requestMatchers("/authenticate").permitAll()/*allen dit punt mag toegankelijk zijn voor niet ingelogde gebruikers*/
+                .anyRequest().denyAll()
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);

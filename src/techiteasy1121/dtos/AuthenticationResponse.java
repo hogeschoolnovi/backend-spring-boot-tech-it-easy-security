@@ -1,4 +1,4 @@
-package techiteasy1121.payload;
+package techiteasy1121.dtos;
 
 public class AuthenticationResponse {
 
