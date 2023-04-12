@@ -92,4 +92,8 @@ De opdracht moet voldoen aan de volgende voorwaarden:
 
 14. Check goed of je alle opdracht-comments hebt uitgevoerd en er geen fouten meer in de applicatie zitten.
 
+15. Injecteer in de UserService de PasswordEncoder. Zorg dat in de createUser methode het password encode wordt, zodat een nieuwe gebruiker ook kan inloggen. 
+
+(Note: Wanneer de PasswordEncoder een "circular reference" geeft, kun je de passwordencoder bean uit de SecurityConfig halen en in een eigen configuratie klasse zetten. Zie voor de uitwerking daarvan de passwordencoder-branch van de uitwerkingen repo)
+
 
