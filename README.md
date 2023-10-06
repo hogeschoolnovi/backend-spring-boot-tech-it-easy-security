@@ -97,7 +97,7 @@ De opdracht moet voldoen aan de volgende voorwaarden:
 
 13. Update de data.sql met users en authorities.
 
-14. Check goed of je alle opdracht-comments hebt uitgevoerd en er geen fouten meer in de applicatie zitten.
+14. Check goed of je alle TODO-comments hebt uitgevoerd en er geen fouten meer in de applicatie zitten.
 
 15. Injecteer in de UserService de PasswordEncoder. Zorg dat in de createUser methode het password encode wordt, zodat een nieuwe gebruiker ook kan inloggen. 
 
