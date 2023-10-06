@@ -46,7 +46,7 @@ public class SpringSecurityConfig {
                 .requestMatchers(HttpMethod.DELETE, "/users/**").hasRole("ADMIN")
                 /*TODO voeg de antmatchers toe voor admin(post en delete) en user (overige)*/
                 .requestMatchers("/authenticated").authenticated()
-                .requestMatchers("/authenticate").permitAll()/*allen dit punt mag toegankelijk zijn voor niet ingelogde gebruikers*/
+                .requestMatchers("/authenticate").permitAll()/*alleen dit punt mag toegankelijk zijn voor niet ingelogde gebruikers*/
                 .anyRequest().denyAll()
                 )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
