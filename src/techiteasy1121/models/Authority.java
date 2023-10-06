@@ -2,10 +2,13 @@ package techiteasy1121.models;
 
 import java.io.Serializable;
 
-/*annotatie*/
+/*TODO annotatie*/
 @IdClass(AuthorityKey.class)
 @Table(name = "authorities")
 public class Authority implements Serializable {
+
+    // We noemen deze klasse "Authority", maar je mag het ook "Roles" of "Bananas" noemen, zolang je dat maar overal doet waar deze klasse gebruikt wordt.
+
 
     @Id
     @Column(nullable = false)

@@ -6,7 +6,7 @@ import java.security.Principal;
 @RestController
 public class AuthenticationController {
 
-    /*inject authentionManager, userDetailService en jwtUtil*/
+    /*TODO inject authentionManager, userDetailService en jwtUtil*/
 
     /*
          Deze methode geeft de principal (basis user gegevens) terug van de ingelogde gebruiker

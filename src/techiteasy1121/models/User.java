@@ -4,10 +4,12 @@ package techiteasy1121.models;
 import java.util.HashSet;
 import java.util.Set;
 
-/*annotatie*/
+/*TODO annotatie*/
 @Table(name = "users")
 public class User {
 
+
+    // Deze eerste 3 variabelen zijn verplicht om te kunnen inloggen met een username, password en rol.
     @Id
     @Column(nullable = false, unique = true)
     private String username;
@@ -15,6 +17,17 @@ public class User {
     @Column(nullable = false, length = 255)
     private String password;
 
+    @OneToMany(
+            targetEntity = Authority.class,
+            mappedBy = "username",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.EAGER)
+    private Set<Authority> authorities = new HashSet<>();
+
+
+    // Deze 3 variabelen zijn niet verplicht.
+    // Je mag ook een "String banaan;" toevoegen, als je dat graag wilt.
     @Column(nullable = false)
     private boolean enabled = true;
 
@@ -24,13 +37,6 @@ public class User {
     @Column
     private String email;
 
-    @OneToMany(
-            targetEntity = Authority.class,
-            mappedBy = "username",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true,
-            fetch = FetchType.EAGER)
-    private Set<Authority> authorities = new HashSet<>();
 
     public String getUsername() { return username; }
     public void setUsername(String username) {

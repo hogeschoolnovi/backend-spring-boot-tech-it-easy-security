@@ -5,10 +5,10 @@ import java.util.ArrayList;
 
 
 
-/*annotatie*/
+/*TODO annotatie*/
 public class CustomUserDetailsService implements UserDetailsService {
 
-    /*inject userservice */
+    /*TODO inject userservice */
 
 
 

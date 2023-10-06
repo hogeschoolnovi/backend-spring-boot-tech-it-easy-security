@@ -5,18 +5,7 @@ package techiteasy1121.config;
 @EnableWebSecurity
 public class SpringSecurityConfig {
 
-    /*inject customUserDetailService en jwtRequestFilter*/
-
-
-    // Authenticatie met customUserDetailsService en passwordEncoder
-    @Bean
-    public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
-        return http.getSharedObject(AuthenticationManagerBuilder.class)
-                .userDetailsService(customUserDetailsService)
-                .passwordEncoder(passwordEncoder())
-                .and()
-                .build();
-    }
+    /*TODO inject customUserDetailService en jwtRequestFilter*/
 
 
     // PasswordEncoderBean. Deze kun je overal in je applicatie injecteren waar nodig.
@@ -26,27 +15,41 @@ public class SpringSecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
+
+    // Authenticatie met customUserDetailsService en passwordEncoder
+    @Bean
+    public AuthenticationManager authenticationManager(HttpSecurity http, PasswordEncoder passwordEncoder) throws Exception {
+        var auth = new DaoAuthenticationProvider();
+        auth.setPasswordEncoder(passwordEncoder);
+        auth.setUserDetailsService(customUserDetailsService);
+        return new ProviderManager(auth);
+    }
+
+
+
     // Authorizatie met jwt
     @Bean
     protected SecurityFilterChain filter (HttpSecurity http) throws Exception {
 
         //JWT token authentication
         http
-                .csrf().disable()
-                .httpBasic.disable()
-                .cors().and()
-                .authorizeHttpRequests()
-                .requestMatchers(HttpMethod.POST, "/users").permitAll()
+                .csrf(csrf -> csrf.disable())
+                .httpBasic(basic -> basic.disable())
+                .cors(Customizer.withDefaults())
+                .authorizeHttpRequests(auth ->
+                        auth
+                                // Wanneer je deze uncomments, staat je hele security open. Je hebt dan alleen nog een jwt nodig.
+//                .requestMatchers("/**").permitAll()
+                .requestMatchers(HttpMethod.POST, "/users").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.GET,"/users").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.POST,"/users/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.DELETE, "/users/**").hasRole("ADMIN")
-                /*voeg de antmatchers toe voor admin(post en delete) en user (overige)*/
+                /*TODO voeg de antmatchers toe voor admin(post en delete) en user (overige)*/
                 .requestMatchers("/authenticated").authenticated()
                 .requestMatchers("/authenticate").permitAll()/*allen dit punt mag toegankelijk zijn voor niet ingelogde gebruikers*/
                 .anyRequest().denyAll()
-                .and()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                )
+                .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }

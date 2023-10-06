@@ -11,7 +11,7 @@ import java.util.Map;
 public class JwtUtil {
 
     // De secret key moet minimaal 256 bits lang zijn, of grofweg 45 characters
-    private final static String SECRET_KEY = "/*vul hier je super geheime sleutel in*/";
+    private final static String SECRET_KEY = /* TODO vul hier je super geheime sleutel in*/;
 
     private Key getSigningKey() {
         byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
@@ -49,7 +49,7 @@ public class JwtUtil {
                 .setClaims(claims)
                 .setSubject(subject)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24 * 10))
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24)) //TODO: de JWT vervalt nu na 24 uur. Zorg dat de JWT 10 dagen geldig is.
                 .signWith(getSigningKey() ,SignatureAlgorithm.HS256)
                 .compact();
     }
