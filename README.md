@@ -13,6 +13,7 @@ Maak de beveiliging voor de applicatie met een JWT. Zorg hierbij dat er een user
  
 ## Randvoorwaarden
 De opdracht moet voldoen aan de volgende voorwaarden:
+- De `POM` bevat _spring-boot-starter-parent_ versie 3.1.4
 - De `POM` bevat de _spring-boot-starter-security_, _jjwt-api_, _jjwt-impl_ en _jjwt-jackson_ dependencies
 - De applicatie bevat:
   - `GlobalCorsConfiguration`
@@ -65,6 +66,12 @@ De opdracht moet voldoen aan de volgende voorwaarden:
    <version>0.11.5</version>
    <scope>runtime</scope>
    </dependency>`
+ - `<!--    Deze dependency heb je nodig, omdat de versie die origineel bij Spring Boot 3.1.4 wordt geleverd een bug heeft die in dit project een error geeft voor de User-Authority relatie.    -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>6.3.1.Final</version>
+        </dependency>`
   
 2. Voeg de `User`, `Authority` en de `AuthorityKey` toe als modellen.
   
@@ -95,5 +102,9 @@ De opdracht moet voldoen aan de volgende voorwaarden:
 15. Injecteer in de UserService de PasswordEncoder. Zorg dat in de createUser methode het password encode wordt, zodat een nieuwe gebruiker ook kan inloggen. 
 
 (Note: Wanneer de PasswordEncoder een "circular reference" geeft, kun je de passwordencoder bean uit de SecurityConfig halen en in een eigen configuratie klasse zetten. Zie voor de uitwerking daarvan de passwordencoder-branch van de uitwerkingen repo)
+
+## Bonus
+
+Zorg dat een User alleen diens eigen gebruikersgegens kan ophalen via "GET localhost:8080/user/{id}". Maak hierbij gebruik van de "SecurityContextHolder". Kijk op internet of in de JwtRequestFilter voor verdere hints over hoe je dit kunt toepassen.
 
 
