@@ -85,7 +85,7 @@ De opdracht moet voldoen aan de volgende voorwaarden:
 
 7. Voeg de `BadRequestException` en de `UsernameNotFoundException` toe aan je project en zorg dat de exception handlers zijn toegevoegd in je `ExceptionController`.
 
-8. Voeg een nieuwe map genaamd `payload` met daarin de `AuthenticationRequest` en de `AuthenticationResponse` toe aan het project.
+8. Voeg een nieuwe map genaamd `payload`  met daarin de `AuthenticationRequest` en de `AuthenticationResponse` toe aan het project. (Je mag deze 2 ook in de `dto` map zetten.)
 
 9. Voeg de `AuthenticationController` en de `UserController` toe aan je project.
 
