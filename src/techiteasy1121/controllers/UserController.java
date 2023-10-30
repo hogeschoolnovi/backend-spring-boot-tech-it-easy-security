@@ -68,6 +68,7 @@ public class UserController {
         return ResponseEntity.ok().body(userService.getAuthorities(username));
     }
 
+    //TODO: Als Requestbody wordt hier een Map<String, Object> gebruikt om de "authorityName" binnen te halen, dat werkt, maar kun je een beter oplossing bedenken?
     @PostMapping(value = "/{username}/authorities")
     public ResponseEntity<Object> addUserAuthority(@PathVariable("username") String username, @RequestBody Map<String, Object> fields) {
         try {
