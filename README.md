@@ -37,14 +37,17 @@ De opdracht moet voldoen aan de volgende voorwaarden:
 - De applicatie moet draaien met toegang tot de endpoints voor de juiste gebruikers geven
 
 ### Belangrijk
-- De applicatie moet geen toegang geven zonder authenticatie en identificatie;
+- De applicatie moet geen toegang geven zonder authenticatie en identificatie (behalve om in te loggen);
 - De applicatie heeft een user(employee)- en een admin-rol;
 - De applicatie moet draaien met toegang tot de endpoints voor de juiste gebruikers;
-- Los alle comments op uit de toegevoegde klassen, na het kopiëren en plakken van die klassen.
+- Los alle comments en TODO's op uit de toegevoegde klassen, na het kopiëren en plakken van die klassen.
+- Deze opdracht is een uitbreiding op de vorige opdracht. Je hoeft dus geen nieuw project te beginnen, enkel een nieuwe git-branch. Je hoeft deze repo ook niet te clonen, tenzij je dat voor je eigen leesgemak doet.
 
 ## Stappenplan
 
-1. Voeg de volgende dependencies toe aan je POM.XML.
+1. Open je uitwerkingen van de vorige keer. De klassen en code die in dit project staan, voeg je aan het project van vorige week toe. Je mag het kopieren en plakken, maar overschrijven is leerzamer.
+Had je de opdracht van vorige week nog niet helemaal uitgewerkt, dan mag je ook de [voorbeeld uitwerkingen](https://github.com/hogeschoolnovi/backend-spring-boot-tech-it-easy-relations-uitwerkingen) gebruiken.
+2. Voeg de volgende dependencies toe aan je POM.XML.
  - `<dependency>
      <groupId>org.springframework.boot</groupId>
      <artifactId>spring-boot-starter-security</artifactId>
@@ -73,33 +76,33 @@ De opdracht moet voldoen aan de volgende voorwaarden:
             <version>6.3.1.Final</version>
         </dependency>`
   
-2. Voeg de `User`, `Authority` en de `AuthorityKey` toe als modellen.
+3. Voeg de `User`, `Authority` en de `AuthorityKey` toe als modellen en los de fouten op.
   
-3. Voeg een `UserRepository` toe aan het project.
+4. Voeg een `UserRepository` toe aan het project en los de fouten op.
 
-4. Voeg de `UserDto` toe aan de applicatie.
+5. Voeg de `UserDto` toe aan de applicatie en los de fouten op.
 
-5. Voeg een map toe genaamd `utils`. Voeg hier de `JwtUtil` en de `RandomStringGenerator` toe aan het project.
+6. Voeg een map toe genaamd `utils`. Voeg hier de `JwtUtil` en de `RandomStringGenerator` toe aan het project en los de fouten op.
   
-6. Voeg de `UserService` en de `CustomUserDetailService` toe aan het project.
+7. Voeg de `UserService` en de `CustomUserDetailService` toe aan het project en los de fouten op.
 
-7. Voeg de `BadRequestException` en de `UsernameNotFoundException` toe aan je project en zorg dat de exception handlers zijn toegevoegd in je `ExceptionController`.
+8. Voeg de `BadRequestException` en de `UsernameNotFoundException` toe aan je project en zorg dat de exception handlers zijn toegevoegd in je `ExceptionController` en los de fouten op.
 
-8. Voeg een nieuwe map genaamd `payload`  met daarin de `AuthenticationRequest` en de `AuthenticationResponse` toe aan het project. (Je mag deze 2 ook in de `dto` map zetten.)
+9. Voeg een nieuwe map genaamd `payload`  met daarin de `AuthenticationRequest` en de `AuthenticationResponse` toe aan het project en los de fouten op. (Je mag deze 2 ook in de `dto` map zetten.)
 
-9. Voeg de `AuthenticationController` en de `UserController` toe aan je project.
+10. Voeg de `AuthenticationController` en de `UserController` toe aan je project en los de fouten op.
 
-10. Voeg de `JwtRequestFilter` toe aan je project in een map genaamd `filter`.
+11. Voeg de `JwtRequestFilter` toe aan je project in een map genaamd `filter` en los de fouten op.
 
-11. Voeg als laatste de `SpringSecurityConfig` en de `GlobalCorsConfiguration` toe aan het project.
+12. Voeg als laatste de `SpringSecurityConfig` en de `GlobalCorsConfiguration` toe aan het project en los de fouten op.
 
-12. Kijk goed of je in de `SpringSecurityConfig` nog requestmatchers wil/moet toevoegen.
+13. Kijk goed of je in de `SpringSecurityConfig` nog requestmatchers wil/moet toevoegen.
 
-13. Update de data.sql met users en authorities.
+14. Update de data.sql met users en authorities.
 
-14. Check goed of je alle TODO-comments hebt uitgevoerd en er geen fouten meer in de applicatie zitten.
+15. Check goed of je alle TODO-comments hebt uitgevoerd en er geen fouten meer in de applicatie zitten.
 
-15. Injecteer in de UserService de PasswordEncoder. Zorg dat in de createUser methode het password encode wordt, zodat een nieuwe gebruiker ook kan inloggen. 
+16. Injecteer in de UserService de PasswordEncoder. Zorg dat in de createUser methode het password encode wordt, zodat een nieuwe gebruiker ook kan inloggen. 
 
 (Note: Wanneer de PasswordEncoder een "circular reference" geeft, kun je de passwordencoder bean uit de SecurityConfig halen en in een eigen configuratie klasse zetten. Zie voor de uitwerking daarvan de passwordencoder-branch van de uitwerkingen repo)
 
