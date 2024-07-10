@@ -44,7 +44,7 @@ public class SpringSecurityConfig {
                 .requestMatchers(HttpMethod.GET,"/users").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.POST,"/users/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.DELETE, "/users/**").hasRole("ADMIN")
-                /*TODO voeg de antmatchers toe voor admin(post en delete) en user (overige)*/
+                /* TODO voeg hier ook de requestmatchers toe voor de andere endpoints (Television etc...) Bedenk zelf welke rol wat zou mogen doen. */
                 .requestMatchers("/authenticated").authenticated()
                 .requestMatchers("/authenticate").permitAll()/*alleen dit punt mag toegankelijk zijn voor niet ingelogde gebruikers*/
                 .anyRequest().denyAll() /*Deze voeg je altijd als laatste toe, om een default beveiliging te hebben voor eventuele vergeten endpoints of endpoints die je later toevoegd. */
